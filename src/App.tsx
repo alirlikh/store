@@ -1,5 +1,5 @@
-import { Button } from "./components/ui/button"
-import { useAppSelector } from "./hooks"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+
 import {
   HomeLayout,
   Landing,
@@ -14,13 +14,26 @@ import {
   Register
 } from "./pages"
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeLayout />,
+    children: [
+      { index: true, element: <Landing /> },
+      { path: "products", element: <Products /> },
+      { path: "products/:id", element: <SingleProduct /> },
+      { path: "cart", element: <Cart /> },
+      { path: "about", element: <About /> },
+      { path: "checkout", element: <Checkout /> },
+      { path: "orders", element: <Orders /> }
+    ]
+  },
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> }
+])
+
 const App = () => {
-  return (
-    <>
-      <h1>app</h1>
-      <Button variant={"outline"}>Click me</Button>
-    </>
-  )
+  return <RouterProvider router={router}></RouterProvider>
 }
 
 export default App
