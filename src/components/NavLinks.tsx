@@ -8,7 +8,8 @@ const NavLinks = () => {
         return (
           <NavLink
             to={link.href}
-            className={(isActive) => {
+            key={link.label}
+            className={({ isActive }) => {
               return `capitalize font-light tracking-wide ${isActive ? "text-primary" : ""}`
             }}
           >

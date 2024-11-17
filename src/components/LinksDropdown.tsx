@@ -29,7 +29,7 @@ const LinksDropdown = () => {
               <DropdownMenuItem key={link.label}>
                 <NavLink
                   to={link.href}
-                  className={(isActive) => {
+                  className={({ isActive }) => {
                     return `capitalize w-full ${isActive ? "text-primary" : ""}`
                   }}
                 >
