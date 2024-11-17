@@ -1,8 +1,12 @@
-import React from 'react'
+import { FeaturedProducts } from "@/components"
+import { Hero } from "@/components"
 
 const Landing = () => {
   return (
-    <div>Landing</div>
+    <>
+      <Hero />
+      <FeaturedProducts />
+    </>
   )
 }
 
