@@ -15,6 +15,7 @@ import {
 } from "./pages"
 import { ErrorElement } from "./components"
 import { loader as landingLoader } from "@/pages/Landing"
+import { loader as productLoader } from "@/pages/Products"
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,18 @@ const router = createBrowserRouter([
     element: <HomeLayout />,
     errorElement: <Error />,
     children: [
-      { index: true, element: <Landing />, errorElement: <ErrorElement />, loader: landingLoader },
-      { path: "products", element: <Products />, errorElement: <ErrorElement /> },
+      {
+        index: true,
+        element: <Landing />,
+        errorElement: <ErrorElement />,
+        loader: landingLoader
+      },
+      {
+        path: "products",
+        element: <Products />,
+        errorElement: <ErrorElement />
+        // loader: productLoader
+      },
       { path: "products/:id", element: <SingleProduct />, errorElement: <ErrorElement /> },
       { path: "cart", element: <Cart />, errorElement: <ErrorElement /> },
       { path: "about", element: <About />, errorElement: <ErrorElement /> },
