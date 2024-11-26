@@ -44,7 +44,11 @@ const SingleProduct = () => {
           <h4 className="text-xl mt-2">{company}</h4>
           <p className="mt-3 text-md bg-muted inline-block p-2 rounded-md">{dollarsAmount}</p>
           <p className="mt-6 leading-8">{description}</p>
-          <SelectProductColor />
+          <SelectProductColor
+            colors={colors}
+            productColor={productColor}
+            setProductColor={setProductColor}
+          />
           <SelectProductAmount />
           <Button size="lg" className="mt-10" onClick={addToCart}>
             Add to bag
