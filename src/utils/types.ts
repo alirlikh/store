@@ -2,6 +2,10 @@ export type ProductsResponse = {
   data: Product[]
   meta: ProductsMeta
 }
+export type SingleProductResponse = {
+  data: Product
+  meta: {}
+}
 
 export type Product = {
   id: number
