@@ -6,7 +6,6 @@ type ConstructUrlParams = {
 
 export const constructUrl = ({ pageNumber, search, pathname }: ConstructUrlParams): string => {
   const searchParams = new URLSearchParams(search)
-  console.log(`foo =`, searchParams.toString())
   searchParams.set("page", pageNumber.toString())
   return `${pathname}?${searchParams.toString()}`
 }
