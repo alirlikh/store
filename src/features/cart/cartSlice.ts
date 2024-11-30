@@ -50,7 +50,7 @@ const cartSlice = createSlice({
       cartSlice.caseReducers.calculateTotals(state)
       toast({ description: "Item removed from the cart" })
     },
-    editeItem: (state, action: PayloadAction<{ cartID: string; amount: number }>) => {
+    editItem: (state, action: PayloadAction<{ cartID: string; amount: number }>) => {
       const { cartID, amount } = action.payload
       const cartItem = state.cartItems.find((i) => i.cartID === cartID)
       if (!cartItem) return
@@ -68,6 +68,6 @@ const cartSlice = createSlice({
   }
 })
 
-export const { addItem, clearCart, removeItem, editeItem, calculateTotals } = cartSlice.actions
+export const { addItem, clearCart, removeItem, editItem, calculateTotals } = cartSlice.actions
 
 export default cartSlice.reducer
