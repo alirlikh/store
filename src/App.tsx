@@ -20,42 +20,53 @@ import { loader as SingleProductLoader } from "@/pages/SingleProduct"
 
 import { action as registerUser } from "./pages/Register"
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <HomeLayout />,
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: <Landing />,
+          errorElement: <ErrorElement />,
+          loader: landingLoader
+        },
+        {
+          path: "products",
+          element: <Products />,
+          errorElement: <ErrorElement />,
+          loader: productLoader
+        },
+        {
+          path: "products/:id",
+          element: <SingleProduct />,
+          errorElement: <ErrorElement />,
+          loader: SingleProductLoader
+        },
+        { path: "cart", element: <Cart />, errorElement: <ErrorElement /> },
+        { path: "about", element: <About />, errorElement: <ErrorElement /> },
+        { path: "checkout", element: <Checkout />, errorElement: <ErrorElement /> },
+        { path: "orders", element: <Orders />, errorElement: <ErrorElement /> }
+      ]
+    },
+    { path: "/login", element: <Login />, errorElement: <Error /> },
+    { path: "/register", element: <Register />, errorElement: <Error />, action: registerUser }
+  ],
   {
-    path: "/",
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-        errorElement: <ErrorElement />,
-        loader: landingLoader
-      },
-      {
-        path: "products",
-        element: <Products />,
-        errorElement: <ErrorElement />,
-        loader: productLoader
-      },
-      {
-        path: "products/:id",
-        element: <SingleProduct />,
-        errorElement: <ErrorElement />,
-        loader: SingleProductLoader
-      },
-      { path: "cart", element: <Cart />, errorElement: <ErrorElement /> },
-      { path: "about", element: <About />, errorElement: <ErrorElement /> },
-      { path: "checkout", element: <Checkout />, errorElement: <ErrorElement /> },
-      { path: "orders", element: <Orders />, errorElement: <ErrorElement /> }
-    ]
-  },
-  { path: "/login", element: <Login />, errorElement: <Error /> },
-  { path: "/register", element: <Register />, errorElement: <Error />, action: registerUser }
-])
+    future: {
+      v7_fetcherPersist: true,
+      v7_normalizeFormMethod: true,
+      v7_partialHydration: true,
+      v7_relativeSplatPath: true,
+      v7_skipActionErrorRevalidation: true
+    }
+  }
+)
 
 const App = () => {
-  return <RouterProvider router={router}></RouterProvider>
+  return <RouterProvider router={router} future={{ v7_startTransition: true }}></RouterProvider>
 }
 
 export default App
