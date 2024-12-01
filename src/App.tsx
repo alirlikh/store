@@ -18,6 +18,8 @@ import { loader as landingLoader } from "@/pages/Landing"
 import { loader as productLoader } from "@/pages/Products"
 import { loader as SingleProductLoader } from "@/pages/SingleProduct"
 
+import { action as registerUser } from "./pages/Register"
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
     ]
   },
   { path: "/login", element: <Login />, errorElement: <Error /> },
-  { path: "/register", element: <Register />, errorElement: <Error /> }
+  { path: "/register", element: <Register />, errorElement: <Error />, action: registerUser }
 ])
 
 const App = () => {
