@@ -69,3 +69,12 @@ export type CartState = {
   tax: number
   orderTotal: number
 }
+
+export type Checkout = {
+  name: string
+  address: string
+  orderTotal: string
+  chargeTotal: number
+  cartItems: CartItem[]
+  numItemsInCart: number
+}
