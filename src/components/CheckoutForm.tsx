@@ -50,7 +50,6 @@ export const action =
         }
       )
 
-      console.log(`foo =`, response)
       store.dispatch(clearCart())
 
       toast({ description: "order placed" })
